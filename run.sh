@@ -13,6 +13,6 @@ mkdir -p /root/.ssh/
 echo "adding keys:"
 echo $PUBLIC_SSH_KEYS
 
-echo $PUBLIC_SSH_KEYS > /root/.ssh/authorized_keys
+echo $PUBLIC_SSH_KEYS | sed -e 's/ssh-/\nssh-/g' > /root/.ssh/authorized_keys
 
 exec /usr/sbin/sshd -D
